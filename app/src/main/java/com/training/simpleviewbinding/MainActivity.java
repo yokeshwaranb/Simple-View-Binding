@@ -18,5 +18,25 @@ public class MainActivity extends AppCompatActivity {
         View rootView = activityMainBinding.getRoot();
         setContentView(rootView);
 //        setContentView(R.layout.activity_main);
+
+        activityMainBinding.btnHideShow.setText("Hide");
+        activityMainBinding.btnHideShow.setOnClickListener(v -> hideOrShow());
+
+        activityMainBinding.button.setOnClickListener(v -> setText());
+    }
+
+    private void hideOrShow() {
+        int visibility = (activityMainBinding.imageView.getVisibility() == View.VISIBLE) ? View.GONE : View.VISIBLE;
+        activityMainBinding.imageView.setVisibility(visibility);
+        if(visibility == View.VISIBLE) {
+            activityMainBinding.btnHideShow.setText("Hide");
+        } else {
+            activityMainBinding.btnHideShow.setText("Show");
+        }
+    }
+
+    private void setText() {
+        String str = activityMainBinding.editText.getText().toString();
+        activityMainBinding.textView.setText(str);
     }
 }
